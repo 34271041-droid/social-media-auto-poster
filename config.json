@@ -1,0 +1,83 @@
+{
+  "name": "social-media-auto-poster",
+  "version": "1.0.0",
+  "description": "小红书自动发布+养号（MuMu模拟器+ADB方案）",
+  "author": "郭哥",
+  "pricing": {
+    "type": "one-time",
+    "price_usd": 9.9,
+    "currency": "USD"
+  },
+  "inputs": {
+    "muemu_path": {
+      "type": "string",
+      "description": "MuMu模拟器ADB路径",
+      "default": "C:\\Program Files\\Netease\\MuMuPlayer-12.0\\shell\\adb.exe"
+    },
+    "action": {
+      "type": "string",
+      "description": "操作类型：post/like/comment/follow/browse",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "description": "笔记标题（action=post时必填）"
+    },
+    "content": {
+      "type": "string",
+      "description": "笔记内容（action=post时必填）"
+    },
+    "note_id": {
+      "type": "string",
+      "description": "笔记ID（action=like/comment时必填）"
+    },
+    "comment": {
+      "type": "string",
+      "description": "评论内容（action=comment时必填）"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "用户ID（action=follow时必填）"
+    },
+    "duration_minutes": {
+      "type": "integer",
+      "description": "养号时长（分钟，action=browse时使用）",
+      "default": 30
+    }
+  },
+  "outputs": {
+    "success": {
+      "type": "boolean",
+      "description": "操作是否成功"
+    },
+    "message": {
+      "type": "string",
+      "description": "操作结果消息"
+    },
+    "note_id": {
+      "type": "string",
+      "description": "发布的笔记ID（action=post时返回）"
+    }
+  },
+  "dependencies": {
+    "python": ">=3.8",
+    "packages": [],
+    "external": [
+      "MuMu模拟器（安卓9/12版本）",
+      "小红书APP（安装在MuMu中）",
+      "ADB（MuMu自带）"
+    ]
+  },
+  "test_command": "python test_social_media_auto_poster.py",
+  "deploy": {
+    "github": {
+      "repo": "social-media-auto-poster",
+      "username": "34271041-droid",
+      "token_env": "GITHUB_TOKEN"
+    },
+    "gumroad": {
+      "product_id": "social-media-auto-poster-v1",
+      "price_usd": 9.9
+    }
+  }
+}
